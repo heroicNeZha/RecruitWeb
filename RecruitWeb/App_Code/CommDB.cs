@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace RecruitWeb.App_Code
+namespace RecruitWeb
 {
     public class CommDB
     {
@@ -43,6 +43,25 @@ namespace RecruitWeb.App_Code
             myda.Fill(myds, tname);
             myconn.Close();
             return myds;
+        }
+
+        public int Login(string sql, ref string id, ref string name)
+        {
+            int i = 0;
+            string mystr = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            SqlConnection myconn = new SqlConnection();
+            myconn.ConnectionString = mystr;
+            myconn.Open();
+            SqlCommand mycmd = new SqlCommand(sql, myconn);
+            SqlDataReader myreader = mycmd.ExecuteReader();
+            while (myreader.Read())  //循环读取信息
+            {
+                id = myreader[0].ToString();
+                name = myreader[1].ToString();
+                i++;
+            }
+            myconn.Close();
+            return i;
         }
     }
 }
