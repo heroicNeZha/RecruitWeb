@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RecruitWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,52 +10,60 @@ namespace RecruitWeb
 {
     public partial class _Default : Page
     {
-        CommDB mydb = new CommDB();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["role"] = null;
+            Session["user"] = null;
         }
 
         protected void Login(object sender, EventArgs e)
         {
             if (IsValid)
             {
-                string mysql;
-                int i;
                 switch (identity.SelectedIndex)
                 {
                     case 0:
-                        string Cid = "";
-                        string Cname = "";
-                        mysql = "SELECT Cid,Cname FROM company WHERE Cusername = '" + username.Text + "' AND Cpassword = '" + Password.Text + "'";
-                        i = mydb.Login(mysql,ref Cid,ref Cname);
-                        if (i > 0)
+                        if (DCompany.Exist(username.Text))
                         {
-                            Session["Cid"] = Cid;
-                            Session["Cname"] = Cname;
-                            Session["userType"] = "0";
-                            Server.Transfer("~/Company/welcome.aspx");
+                            Company company = DCompany.Login(username.Text, Password.Text);
+                            if (company != null)
+                            {
+                                Session["role"] = "company";
+                                Session["user"] = company;
+                                company = (Company) Session["user"];
+                                Response.Write("<script>alert('登录成功!"+company.Cname1+"');</script>");
+                                Server.Transfer("~/Com/welcome.aspx");
+                            }
+                            else
+                            {
+                                Response.Write("<script>alert('密码不正确!');</script>");
+                            }
                         }
                         else
                         {
-                            Response.Write("<script>alert('对不起!有错误请查实!');</script>");
+                            Response.Write("<script>alert('用户名不存在!');</script>");
                         }
                         break;
                     case 1:
-                        string Sid = "";
-                        string Sname = "";
-                        mysql = "SELECT Sid,Sname FROM Scompany WHERE Susername = '" + username.Text + "' AND Spassword = '" + Password.Text + "'";
-                        i = mydb.Login(mysql, ref Sid, ref Sname);
-                        if (i > 0)
+                        if (DSeeker.Exist(username.Text))
                         {
-                            Session["Sid"] = Sid;
-                            Session["Sname"] = Sname;
-                            Session["userType"] = "1";
-                            Server.Transfer("~/Seeker/About.aspx");
+                            Seeker seeker = DSeeker.Login(username.Text, Password.Text);
+                            if (seeker != null)
+                            {
+                                Session["role"] = "seeker";
+                                Session["user"] = seeker;
+                                seeker = (Seeker)Session["user"];
+                                Response.Write("<script>alert('登录成功!" + seeker.Sname1 + "');</script>");
+                                Server.Transfer("~/See/welcome.aspx");
+                            }
+                            else
+                            {
+                                Response.Write("<script>alert('密码不正确!');</script>");
+                            }
                         }
                         else
                         {
-                            Response.Write("<script>alert('对不起!有错误请查实!');</script>");
+                            Response.Write("<script>alert('用户名不存在!');</script>");
                         }
                         break;
                 }

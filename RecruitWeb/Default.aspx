@@ -3,15 +3,15 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h1>五八招聘</h1>
-        <p class="lead">欢迎来到五八招聘,请先登录</p>
+        <h1>伍八招聘</h1>
+        <p class="lead">欢迎来到伍八招聘,请先登录</p>
     </div>
 
     <div class="row">
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>使用本地帐户登录<%:Application["end"] %>。</h4>
+                    <h4>使用本地帐户登录。</h4>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">

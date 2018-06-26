@@ -7,14 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - 我的 ASP.NET 应用程序</title>
+    <title><%: Page.Title %> - 伍八招聘</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
 </head>
 <body>
     <form runat="server">
@@ -39,7 +38,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,31 +46,58 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">应用程序名称</a>
+                    <a class="navbar-brand" runat="server" href="~/">伍八招聘</a>
                 </div>
+                <%if (Session["role"]==null)
+                        { %>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">主页</a></li>
-                        <li><a runat="server" href="~/About">关于</a></li>
-                        <li><a runat="server" href="~/Contact">联系方式</a></li>
+                        <li><a runat="server" href="~/">关于</a></li>
+                        <li><a runat="server" href="~/">联系方式</a></li>
                     </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">注册</a></li>
-                                <li><a runat="server" href="~/Account/Login">登录</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="注销" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/">注册</a></li>
+                        <li><a runat="server" href="~/">登录</a></li>
+                    </ul>
                 </div>
+                <%}else if(Session["role"].Equals("company"))//公司导航
+    { %>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Com/welcome.aspx">主页</a></li>
+                        <li><a runat="server" href="~/Com/company.aspx">公司简介</a></li>
+                        <li><a runat="server" href="~/Com/job.aspx">职位管理</a></li>
+                        <li><a runat="server" href="~/Com/apply.aspx">查看申请</a></li>
+                        <li><a runat="server" href="~/Com/employ.aspx">录用信息</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Session["user"]  %> !</a></li>
+                        <li>
+                            <a runat="server" href="~/Default.aspx">注销</a>
+                        </li>
+                    </ul>
+                </div>
+                <%}else if (Session["role"].Equals("seeker"))//求职者导航
+                        {%>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/See/welcome.aspx">主页</a></li>
+                        <li><a runat="server" href="~/See/resume.aspx">简历信息</a></li>
+                        <li><a runat="server" href="~/See/job.aspx">查看职位</a></li>
+                        <li><a runat="server" href="~/See/news.aspx">我的信箱</a></li>
+                        <li><a runat="server" href="~/See/employ.aspx">录用信息</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Session["user"]  %> !</a></li>
+                        <li>
+                            <a runat="server" href="~/Default.aspx">注销</a>
+                        </li>
+                    </ul>
+                </div>
+                <%
+                        }
+                %>
             </div>
         </div>
         <div class="container body-content">
@@ -79,7 +105,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - 我的 ASP.NET 应用程序</p>
+                <p>&copy; <%: DateTime.Now.Year %> - 伍八招聘</p>
             </footer>
         </div>
     </form>
