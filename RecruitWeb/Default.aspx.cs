@@ -31,7 +31,7 @@ namespace RecruitWeb
                                 Session["role"] = "company";
                                 Session["user"] = company;
                                 company = (Company) Session["user"];
-                                Response.Write("<script>alert('登录成功!"+company.Cname1+"');</script>");
+                                Response.Write("<script>alert('登录成功!');</script>");
                                 Server.Transfer("~/Com/welcome.aspx");
                             }
                             else
@@ -53,7 +53,7 @@ namespace RecruitWeb
                                 Session["role"] = "seeker";
                                 Session["user"] = seeker;
                                 seeker = (Seeker)Session["user"];
-                                Response.Write("<script>alert('登录成功!" + seeker.Sname1 + "');</script>");
+                                Response.Write("<script>alert('登录成功!');</script>");
                                 Server.Transfer("~/See/welcome.aspx");
                             }
                             else

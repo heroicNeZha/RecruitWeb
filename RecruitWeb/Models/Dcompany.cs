@@ -39,6 +39,7 @@ namespace RecruitWeb.Models
                     company.Cid1 = (int)dt.Rows[0].ItemArray[0];
                     company.Cname1 = dt.Rows[0].ItemArray[1].ToString();
                     company.Cdetails1 = dt.Rows[0].ItemArray[2].ToString();
+                    company.Caddress1 = dt.Rows[0].ItemArray[5].ToString();
                     return company;
                 }
                 else

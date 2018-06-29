@@ -2,9 +2,11 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>伍八招聘</h1>
-        <p class="lead">欢迎来到伍八招聘,请先登录</p>
+    <div class ="container">
+        <div class="jumbotron">
+            <h1>伍八招聘</h1>
+            <p class="lead">欢迎来到伍八招聘,请先登录</p>
+        </div>
     </div>
 
     <div class="row">

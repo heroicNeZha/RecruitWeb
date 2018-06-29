@@ -10,6 +10,7 @@ namespace RecruitWeb.Models
         int Cid;
         string Cname;
         string Cdetails;
+        string Caddress;
 
         public int Cid1
         {
@@ -49,6 +50,20 @@ namespace RecruitWeb.Models
                 Cdetails = value;
             }
         }
+
+        public string Caddress1
+        {
+            get
+            {
+                return Caddress;
+            }
+
+            set
+            {
+                Caddress = value;
+            }
+        }
+
         public override string ToString()
         {
             return Cname;
