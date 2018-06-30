@@ -7,60 +7,60 @@ namespace RecruitWeb.Models
 {
     public class Company
     {
-        int Cid;
-        string Cname;
-        string Cdetails;
-        string Caddress;
+        int cid;
+        string cname;
+        string cdetails;
+        string caddress;
 
-        public int Cid1
+        public int Cid
         {
             get
             {
-                return Cid;
+                return cid;
             }
 
             set
             {
-                Cid = value;
+                cid = value;
             }
         }
 
-        public string Cname1
+        public string Cname
         {
             get
             {
-                return Cname;
+                return cname;
             }
 
             set
             {
-                Cname = value;
+                cname = value;
             }
         }
 
-        public string Cdetails1
+        public string Cdetails
         {
             get
             {
-                return Cdetails;
+                return cdetails;
             }
 
             set
             {
-                Cdetails = value;
+                cdetails = value;
             }
         }
 
-        public string Caddress1
+        public string Caddress
         {
             get
             {
-                return Caddress;
+                return caddress;
             }
 
             set
             {
-                Caddress = value;
+                caddress = value;
             }
         }
 

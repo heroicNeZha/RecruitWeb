@@ -19,7 +19,7 @@ namespace RecruitWeb.Models
             };
             int isExist = Convert.ToInt32(DBHelper.ExecuteScalar(sql, parm));
             DBHelper.SqlClose();
-            return isExist > 0 ? true : false;
+            return isExist > 0;
         }
 
         public static Company Login(string name, string pwd)
@@ -36,10 +36,10 @@ namespace RecruitWeb.Models
                 if (dt.Rows[0].ItemArray[4].ToString() == pwd)
                 {
                     Company company = new Company();
-                    company.Cid1 = (int)dt.Rows[0].ItemArray[0];
-                    company.Cname1 = dt.Rows[0].ItemArray[1].ToString();
-                    company.Cdetails1 = dt.Rows[0].ItemArray[2].ToString();
-                    company.Caddress1 = dt.Rows[0].ItemArray[5].ToString();
+                    company.Cid = (int)dt.Rows[0].ItemArray[0];
+                    company.Cname = dt.Rows[0].ItemArray[1].ToString();
+                    company.Cdetails = dt.Rows[0].ItemArray[2].ToString();
+                    company.Caddress = dt.Rows[0].ItemArray[5].ToString();
                     return company;
                 }
                 else
@@ -51,6 +51,21 @@ namespace RecruitWeb.Models
             {
                 return null;
             }
+        }
+
+        public static bool UpdateCompany(Company company)
+        {
+            string sql = "UPDATE [company] SET [Cname] = @Cname, [Cdetails] = @Cdetails, [Caddress] = @Caddress WHERE [Cid] = @Cid";
+            SqlParameter[] parm = new SqlParameter[]
+                {
+                    new SqlParameter("@Cname",company.Cname),
+                    new SqlParameter("@Cdetails",company.Cdetails),
+                    new SqlParameter("@Caddress",company.Caddress),
+                    new SqlParameter("@Cid",company.Cid)
+                };
+            int line = DBHelper.ExecuteNonQuery(sql, parm);
+            DBHelper.SqlClose();
+            return line>0;
         }
     }
 }

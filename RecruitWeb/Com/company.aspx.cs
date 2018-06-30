@@ -21,9 +21,30 @@ namespace RecruitWeb.Com
             }
             else
             {
-                Response.Write("<script>alert('请先登录!');</script>");
                 Response.Redirect("~/", false);
-            } 
+                Response.Write("<script>alert('请先登录!');</script>");
+            }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            String s1 = Request.Form["company_info"];
+            com.Cdetails = s1;
+            if (DCompany.UpdateCompany(com))
+                Response.Write("<script>alert('修改完成!');</script>");
+            else
+                Response.Write("<script>alert('修改失败!');</script>");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            String s1 = Request.Form["company_address"];
+            com.Caddress = s1;
+            if(DCompany.UpdateCompany(com))
+                Response.Write("<script>alert('修改完成!');</script>");
+            else
+                Response.Write("<script>alert('修改失败!');</script>");
+
         }
     }
 }
