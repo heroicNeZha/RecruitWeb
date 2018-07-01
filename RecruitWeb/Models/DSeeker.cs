@@ -36,8 +36,9 @@ namespace RecruitWeb.Models
                 if (dt.Rows[0].ItemArray[4].ToString() == pwd)
                 {
                     Seeker seeker = new Seeker();
-                    seeker.Sid1 = (int)dt.Rows[0].ItemArray[0];
-                    seeker.Sname1 = dt.Rows[0].ItemArray[1].ToString();
+                    seeker.Sid = (int)dt.Rows[0].ItemArray[0];
+                    seeker.Sresume = (int)dt.Rows[0].ItemArray[2];
+                    seeker.Sname = dt.Rows[0].ItemArray[1].ToString();
                     return seeker;
                 }
                 else

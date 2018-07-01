@@ -7,46 +7,46 @@ namespace RecruitWeb.Models
 {
     public class Seeker
     {
-        int Sid;
-        string Sname;
-        int Sresume;
+        int sid;
+        string sname;
+        int sresume;
 
-        public int Sid1
+        public int Sid
         {
             get
             {
-                return Sid;
+                return sid;
             }
 
             set
             {
-                Sid = value;
+                sid = value;
             }
         }
 
-        public string Sname1
+        public string Sname
         {
             get
             {
-                return Sname;
+                return sname;
             }
 
             set
             {
-                Sname = value;
+                sname = value;
             }
         }
 
-        public int Sresume1
+        public int Sresume
         {
             get
             {
-                return Sresume;
+                return sresume;
             }
 
             set
             {
-                Sresume = value;
+                sresume = value;
             }
         }
 

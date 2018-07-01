@@ -14,6 +14,8 @@ namespace RecruitWeb
         {
             Session["role"] = null;
             Session["user"] = null;
+            Session["uid"] = null;
+            Session["rid"] = null;
         }
 
         protected void Login(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace RecruitWeb
                             {
                                 Session["role"] = "company";
                                 Session["user"] = company;
-                                company = (Company) Session["user"];
+                                Session["uid"] = company.Cid;
                                 Response.Write("<script>alert('登录成功!');</script>");
                                 Server.Transfer("~/Com/welcome.aspx");
                             }
@@ -52,7 +54,8 @@ namespace RecruitWeb
                             {
                                 Session["role"] = "seeker";
                                 Session["user"] = seeker;
-                                seeker = (Seeker)Session["user"];
+                                Session["uid"] = seeker.Sid;
+                                Session["rid"] = seeker.Sresume;
                                 Response.Write("<script>alert('登录成功!');</script>");
                                 Server.Transfer("~/See/welcome.aspx");
                             }

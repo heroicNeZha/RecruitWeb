@@ -38,7 +38,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -86,7 +86,6 @@
                         <li><a runat="server" href="~/See/resume.aspx">简历信息</a></li>
                         <li><a runat="server" href="~/See/job.aspx">查看职位</a></li>
                         <li><a runat="server" href="~/See/news.aspx">我的信箱</a></li>
-                        <li><a runat="server" href="~/See/employ.aspx">录用信息</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <strong><%: Session["user"]  %></strong> !</a></li>

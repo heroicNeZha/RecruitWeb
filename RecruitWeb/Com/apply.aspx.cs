@@ -11,7 +11,16 @@ namespace RecruitWeb.Com
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Write("<script>alert('请先登录!');</script>");
+                Response.Redirect("~/", false);
+            }
+        }
 
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Com/resume.aspx?apply=" + GridView1.SelectedRow.Cells[0].Text);
         }
     }
 }

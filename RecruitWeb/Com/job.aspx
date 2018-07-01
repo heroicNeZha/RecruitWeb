@@ -1,9 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="job.aspx.cs" Inherits="RecruitWeb.Com.job" %>
 <%@ Import Namespace="RecruitWeb.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">职位信息</a></li>
+    </ol>
     <div class="row">
-        <div style="margin: 30px 30px 30px 30px; padding: 30px;">
-            <div id="display" class="well">
+        <div class="com-content">
+            <div id="display" class="well display-box">
                 <%
                     Company company = new Company();
                     if (Session["user"] != null)

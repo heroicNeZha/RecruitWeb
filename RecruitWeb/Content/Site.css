@@ -2,6 +2,7 @@
     body {
         padding-top: 50px;
         padding-bottom: 20px;
+        background:#f4f6f9;
     }
 
     /* Wrapping element */
@@ -54,6 +55,12 @@
         margin-right: 10px;
         float: left;
     }
+    .infoBox .descBox .jobDesc .news {
+        font-size: 16px;
+        color:black;
+        margin-right: 10px;
+        float: left;
+    }
     .infoBox .descBox .jobDate .job_date {
         float: right;
     }
@@ -72,6 +79,7 @@
     }
     .infoBox .descBox .jobDesc {
         float: left;
+        width:86%;
     }
     .infoBox .descBox .jobDate {
         float: right;
@@ -87,4 +95,28 @@
 }
 #check_content .static-borderNone {
     border-right: none;
+}
+.well .resume-well{
+    padding:30px;
+}
+.item-well{
+    width:650px;
+    height:450px;
+}
+.item-table{
+    width:100%;
+    height:100%;
+}
+.check_content{
+    margin-left:4px
+}
+.display-box{
+    padding-left:40px;
+    padding-right:40px;
+}
+.com-content{
+    margin: 30px 30px 30px 30px; padding: 30px;
+}
+.sid-hidden{
+    display:none;
 }

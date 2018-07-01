@@ -11,7 +11,6 @@ namespace RecruitWeb.Models
     {
         public static List<Job> getJobsByCompany(int cid)
         {
-
             string sql = "SELECT * FROM job,company WHERE Jcompany = @cid AND Cid = Jcompany";
             SqlParameter[] parm = new SqlParameter[]
             {
@@ -21,6 +20,34 @@ namespace RecruitWeb.Models
             DBHelper.SqlClose();
             List<Job> jobs = new List<Job>();
             foreach(DataRow row in dt.Rows)
+            {
+                Job job = new Job();
+                job.Jid = (int)row.ItemArray[0];
+                job.Jname = row.ItemArray[1].ToString();
+                job.Jcompany = (int)row.ItemArray[2];
+                job.Jneed = row.ItemArray[3].ToString();
+                job.Jsalary = row.ItemArray[4].ToString();
+                job.Jduty = row.ItemArray[5].ToString();
+                job.Jdemand = row.ItemArray[6].ToString();
+                job.Jdate = row.ItemArray[7].ToString().Split(' ')[0];
+                job.Cname = row.ItemArray[9].ToString();
+                jobs.Add(job);
+            }
+            return jobs;
+        }
+
+        public static List<Job> getJobsBySeeker(int sid)
+        {
+
+            string sql = "SELECT * FROM job,company Where Cid = Jcompany And Jid NOT IN (Select Jid FROM Apply where Sid = @Sid)";
+            SqlParameter[] parm = new SqlParameter[]
+            {
+                new SqlParameter("@Sid",sid)
+            };
+            DataTable dt = DBHelper.GetDataTable(sql, parm);
+            DBHelper.SqlClose();
+            List<Job> jobs = new List<Job>();
+            foreach (DataRow row in dt.Rows)
             {
                 Job job = new Job();
                 job.Jid = (int)row.ItemArray[0];
@@ -61,6 +88,21 @@ namespace RecruitWeb.Models
                     new SqlParameter("@Jduty",job.Jduty),
                     new SqlParameter("@Jdemand",job.Jdemand),
                     new SqlParameter("@Jdate",DateTime.Now.Date),
+                };
+            int line = DBHelper.ExecuteNonQuery(sql, parm);
+            DBHelper.SqlClose();
+            return line > 0;
+        }
+
+        public static bool PushResume(int jid,int sid)
+        {
+            string sql = "INSERT INTO [Apply] ([Jid], [Sid], [Acomment], [Adatetime]) VALUES (@Jid, @Sid, @Acomment, @Adatetime)";
+            SqlParameter[] parm = new SqlParameter[]
+                {
+                    new SqlParameter("@Jid",jid),
+                    new SqlParameter("@Sid",sid),
+                    new SqlParameter("@Acomment","0"),
+                    new SqlParameter("@Adatetime",DateTime.Today)
                 };
             int line = DBHelper.ExecuteNonQuery(sql, parm);
             DBHelper.SqlClose();

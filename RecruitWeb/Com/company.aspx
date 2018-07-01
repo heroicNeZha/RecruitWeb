@@ -2,8 +2,12 @@
 
 <%@ Import Namespace="RecruitWeb.Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <ol class="breadcrumb">
+        <li><a href="#">公司</a></li>
+        <li><a href="#">公司简介</a></li>
+    </ol>
     <div class="row">
-        <div style="margin: 30px 30px 30px 30px; padding: 30px;">
+        <div class="com-content">
             <div style="float: left; background-image: url(../Images/default.png); width: 120px; height: 120px; background-size: 120px 120px;">
             </div>
 
