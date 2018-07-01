@@ -15,6 +15,7 @@ namespace RecruitWeb.Models
         string jduty;
         string jdemand;
         string jdate;
+        string cname;
 
         public int Jid
         {
@@ -117,6 +118,19 @@ namespace RecruitWeb.Models
             set
             {
                 jdate = value;
+            }
+        }
+
+        public string Cname
+        {
+            get
+            {
+                return cname;
+            }
+
+            set
+            {
+                cname = value;
             }
         }
     }

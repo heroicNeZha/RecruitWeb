@@ -24,13 +24,13 @@
             <p class="lead" style="margin-bottom: 0px">公司地址</p>
             <hr />
             <p><%:company.Caddress %></p>
-            <a class="btn btn-primary" href="#editAddress" role="button" data-toggle="modal"><span style="color: #F7F8F7"><i class="icon-plus"></i>编辑</span></a>
+            <a class="btn btn-primary" href="#editAddress" role="button" data-toggle="modal" style="float: right;"><span style="color: #F7F8F7"><i class="glyphicon glyphicon-edit"></i>编辑</span></a>
         </div>
         <div style="margin: 0px 30px 0px 30px; padding: 30px;">
             <p class="lead" style="margin-bottom: 0px">公司信息</p>
             <hr />
             <p ><%:company.Cdetails %></p>
-            <a href="#editDetails" class="btn btn-primary" role="button" data-toggle="modal"><span style="color: #F7F8F7"><i class="icon-plus"></i>编辑</span></a>
+            <a href="#editDetails" class="btn btn-primary" role="button" data-toggle="modal" style="float:right;"><span style="color: #F7F8F7"><i class="glyphicon glyphicon-edit"></i>编辑</span></a>
         </div>
     </div>
     <div class="modal small fade" id="editAddress" tabindex="10" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -41,8 +41,8 @@
             </div>
             <div class="modal-body">
                 <label>公司地址</label>
-                <textarea name="company_address" style="width: 455px;" id="company_address" class="input-xlarge" rows="2"><%:company.Caddress %></textarea>
-                <asp:Button ID="Button2" runat="server" Text="完成" OnClick="Button2_Click" />
+                <textarea name="company_address" style="width: 455px;" id="company_address" class="input-lg" rows="2"><%:company.Caddress %></textarea>
+                <asp:Button ID="Button2" runat="server" class="btn btn-primary" Text="完成" OnClick="Button2_Click" Style="float: right; margin-top: 5px;" />
                 <br />
             </div>
         </div>
@@ -55,8 +55,8 @@
             </div>
             <div class="modal-body">
                 <label>公司信息</label>
-                <textarea name="company_info" style="width: 455px;" id="company_details" class="input-xlarge" rows="10"><%:company.Cdetails %></textarea>
-                <asp:Button ID="Button1" runat="server" Text="完成" OnClick="Button1_Click" />
+                <textarea name="company_info" style="width: 455px;" id="company_details" class="input-lg" rows="10"><%:company.Cdetails %></textarea>
+                <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="完成" OnClick="Button1_Click" style="float:right;margin-top:5px;"/>
                 <br />
             </div>
         </div>

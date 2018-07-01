@@ -21,8 +21,8 @@ namespace RecruitWeb.Com
             }
             else
             {
-                Response.Redirect("~/", false);
                 Response.Write("<script>alert('请先登录!');</script>");
+                Response.Redirect("~/", false);
             }
         }
 

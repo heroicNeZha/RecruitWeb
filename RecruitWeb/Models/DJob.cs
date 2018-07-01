@@ -12,7 +12,7 @@ namespace RecruitWeb.Models
         public static List<Job> getJobsByCompany(int cid)
         {
 
-            string sql = "SELECT * FROM job WHERE Jcompany = @cid";
+            string sql = "SELECT * FROM job,company WHERE Jcompany = @cid AND Cid = Jcompany";
             SqlParameter[] parm = new SqlParameter[]
             {
                 new SqlParameter("@cid",cid)
@@ -30,10 +30,41 @@ namespace RecruitWeb.Models
                 job.Jsalary = row.ItemArray[4].ToString();
                 job.Jduty = row.ItemArray[5].ToString();
                 job.Jdemand = row.ItemArray[6].ToString();
-                job.Jdate = row.ItemArray[7].ToString();
+                job.Jdate = row.ItemArray[7].ToString().Split(' ')[0];
+                job.Cname = row.ItemArray[9].ToString();
                 jobs.Add(job);
             }
             return jobs;
+        }
+
+        public static bool deleteJob(int jid)
+        {
+            string sql = "DELETE FROM [job] WHERE [Jid] = @Jid";
+            SqlParameter[] parm = new SqlParameter[]
+                {
+                    new SqlParameter("@Jid",jid)
+                };
+            int line = DBHelper.ExecuteNonQuery(sql, parm);
+            DBHelper.SqlClose();
+            return line > 0;
+        }
+
+        public static bool InsertJob(Job job)
+        {
+            string sql = "INSERT INTO [job] ([Jname], [Jcompany], [Jneed], [Jsalary], [Jduty], [Jdemand], [Jdate]) VALUES (@Jname, @Jcompany, @Jneed, @Jsalary, @Jduty, @Jdemand, @Jdate)";
+            SqlParameter[] parm = new SqlParameter[]
+                {
+                    new SqlParameter("@Jname",job.Jname),
+                    new SqlParameter("@Jcompany",job.Jcompany),
+                    new SqlParameter("@Jneed",job.Jneed),
+                    new SqlParameter("@Jsalary",job.Jsalary),
+                    new SqlParameter("@Jduty",job.Jduty),
+                    new SqlParameter("@Jdemand",job.Jdemand),
+                    new SqlParameter("@Jdate",DateTime.Now.Date),
+                };
+            int line = DBHelper.ExecuteNonQuery(sql, parm);
+            DBHelper.SqlClose();
+            return line > 0;
         }
     }
 }

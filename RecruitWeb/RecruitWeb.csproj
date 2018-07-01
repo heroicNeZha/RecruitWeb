@@ -182,11 +182,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Com\apply.aspx" />
     <Content Include="Com\company.aspx" />
+    <Content Include="Com\employ.aspx" />
     <Content Include="Com\job.aspx" />
     <Content Include="Com\welcome.aspx" />
     <Content Include="Images\default.png" />
-    <Content Include="See\About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
@@ -202,7 +203,6 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="See\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -247,6 +247,10 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="See\employ.aspx" />
+    <Content Include="See\job.aspx" />
+    <Content Include="See\news.aspx" />
+    <Content Include="See\resume.aspx" />
     <Content Include="See\welcome.aspx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
@@ -370,12 +374,26 @@
     </Compile>
     <Compile Include="App_Code\DBHelper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Com\apply.aspx.cs">
+      <DependentUpon>apply.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Com\apply.aspx.designer.cs">
+      <DependentUpon>apply.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Com\company.aspx.cs">
       <DependentUpon>company.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Com\company.aspx.designer.cs">
       <DependentUpon>company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Com\employ.aspx.cs">
+      <DependentUpon>employ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Com\employ.aspx.designer.cs">
+      <DependentUpon>employ.aspx</DependentUpon>
     </Compile>
     <Compile Include="Com\job.aspx.cs">
       <DependentUpon>job.aspx</DependentUpon>
@@ -397,23 +415,9 @@
     <Compile Include="Models\DSeeker.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Seeker.cs" />
-    <Compile Include="See\About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="See\About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="See\Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="See\Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -426,6 +430,34 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="See\employ.aspx.cs">
+      <DependentUpon>employ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="See\employ.aspx.designer.cs">
+      <DependentUpon>employ.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="See\job.aspx.cs">
+      <DependentUpon>job.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="See\job.aspx.designer.cs">
+      <DependentUpon>job.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="See\news.aspx.cs">
+      <DependentUpon>news.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="See\news.aspx.designer.cs">
+      <DependentUpon>news.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="See\resume.aspx.cs">
+      <DependentUpon>resume.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="See\resume.aspx.designer.cs">
+      <DependentUpon>resume.aspx</DependentUpon>
+    </Compile>
     <Compile Include="See\welcome.aspx.cs">
       <DependentUpon>welcome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
