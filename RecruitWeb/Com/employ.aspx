@@ -24,13 +24,13 @@
                     </div>
                     <div class="itemBox descBox">
                         <div class="jobDesc">
-                            <p class="com-content"><%:employ.Stel %></p>
+                            <p class="news"><%:employ.Stel %></p>
                             <p style="float: left; margin-left: 8px"><%:employ.Smail %></p>
 
                         </div>
                         <div class="jobDate">
                             <p class="job_date"><%:employ.Edate %></p>
-                            <input type='checkbox' name='push' value="<%:employ.Sid %>" id="<%:employ.Sid %>" style="margin-right: 16px">
+                            <input type='checkbox' name='push' value="<%:employ.Eid %>" id="<%:employ.Eid %>" style="margin-right: 16px">
                             <!--<a href="#editJob" id="edit_job" role="button" data-toggle="modal" style="margin-right: 16px"><span class="glyphicon glyphicon-edit"></span>投递</a>-->
                         </div>
                     </div>
@@ -54,11 +54,11 @@
             </div>
             <div class="modal-body">
                 <p class="error-text"><i class="icon-warning-sign modal-icon"></i>请选择面试时间</p>
-
+                <asp:TextBox ID="TextBox1" runat="server" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss',autoUpdateOnChanged:true})"></asp:TextBox>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
-                <asp:Button ID="Button1" runat="server" class="btn btn-private" Text="发送" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" runat="server" class="btn btn-private" Text="发送" OnClick="Button1_Click"/>
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ namespace RecruitWeb.Models
         int eid;
         int jid;
         int sid;
+        int aid;
         string edate;
         string jname;
         string sname;

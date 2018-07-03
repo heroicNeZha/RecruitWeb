@@ -53,6 +53,25 @@ namespace RecruitWeb.Models
             return false;
         }
 
+        public static bool SentInterviewNews(int eid,string date)
+        {
+            string sql = "INSERT INTO [news] ([Sid], [Ntitle], [Ncontent], [Ntime]) VALUES (@Sid, @Ntitle, @Ncontent, @Ntime)";
+            Employ employ = DEmploy.getEmploy(eid);
+            string title = employ.Jname + "-面试通知";
+            string content = "亲爱的" + employ.Sname + "同学:\n\t 请您在 " + date + " 的时候参加 "+ employ.Jname+" 岗位的面试.";
+            SqlParameter[] parm = new SqlParameter[]
+                {
+                    new SqlParameter("@Sid",employ.Sid),
+                    new SqlParameter("@Ntitle",title),
+                    new SqlParameter("@Ncontent",content),
+                    new SqlParameter("@Ntime",DateTime.Now),
+                };
+            int line = DBHelper.ExecuteNonQuery(sql, parm);
+            DBHelper.SqlClose();
+
+            return line > 0;
+        }
+
         public static List<News> getNewsBySeeker(int sid)
         {
             string sql = "SELECT * FROM [news] WHERE ([Sid] = @Sid)";

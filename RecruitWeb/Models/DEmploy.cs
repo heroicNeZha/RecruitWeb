@@ -36,17 +36,42 @@ namespace RecruitWeb.Models
             foreach (DataRow row in dt.Rows)
             {
                 Employ employ = new Employ();
-                employ.Eid = (int)row.ItemArray[0];
-                employ.Jid = (int)row.ItemArray[0];
-                employ.Sid = (int)row.ItemArray[0];
-                employ.Edate = row.ItemArray[1].ToString();
-                employ.Jname = row.ItemArray[1].ToString();
-                employ.Sname = row.ItemArray[1].ToString();
-                employ.Stel = row.ItemArray[1].ToString();
+                employ.Eid = (int)row.ItemArray[3];
+                employ.Jid = (int)row.ItemArray[4];
+                employ.Sid = (int)row.ItemArray[5];
+                employ.Edate = row.ItemArray[6].ToString();
+                employ.Jname = row.ItemArray[7].ToString();
+                employ.Sname = row.ItemArray[0].ToString();
+                employ.Stel = row.ItemArray[2].ToString();
                 employ.Smail = row.ItemArray[1].ToString();
                 employs.Add(employ);
             }
             return employs;
+        }
+
+        public static Employ getEmploy(int eid)
+        {
+            string sql = "SELECT resume.Rname, resume.Remail, resume.Rtel, employ.Eid, employ.Jid, employ.Sid, employ.Edate, job.Jname, job.Jcompany FROM resume INNER JOIN job INNER JOIN employ ON job.Jid = employ.Jid INNER JOIN seeker ON employ.Sid = seeker.Sid ON resume.Rid = seeker.Sresume WHERE(Eid = @Eid)";
+            SqlParameter[] parm = new SqlParameter[]
+            {
+                new SqlParameter("@Eid",eid)
+            };
+            DataTable dt = DBHelper.GetDataTable(sql, parm);
+            DBHelper.SqlClose();
+            foreach (DataRow row in dt.Rows)
+            {
+                Employ employ = new Employ();
+                employ.Eid = (int)row.ItemArray[3];
+                employ.Jid = (int)row.ItemArray[4];
+                employ.Sid = (int)row.ItemArray[5];
+                employ.Edate = row.ItemArray[6].ToString();
+                employ.Jname = row.ItemArray[7].ToString();
+                employ.Sname = row.ItemArray[0].ToString();
+                employ.Stel = row.ItemArray[2].ToString();
+                employ.Smail = row.ItemArray[1].ToString();
+                return employ;
+            }
+            return null;
         }
     }
 }
